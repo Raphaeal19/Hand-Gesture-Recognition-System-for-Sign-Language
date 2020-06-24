@@ -1,3 +1,11 @@
+'''
+GUI utility for the prediction display purpose.
+
+Uses Tkinter library and shows the letters predicted and gives ability to 
+either use the predicted letter into formation of words and sentences or deleting 
+the letters.
+'''
+
 import tkinter
 from tkinter import *
 import PIL.Image, PIL.ImageTk
