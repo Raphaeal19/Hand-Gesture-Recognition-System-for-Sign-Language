@@ -13,6 +13,7 @@ CATEGORIES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 			  'W', 'X', 'Y', 'Z']
 
 
+#utility to convert dataset of images into a single channel(Grayscale) format
 def cvt_dataset_into_bin():
 	for category in CATEGORIES:
 		bin_path = os.path.join(DATA_BINDIR, category)
@@ -29,7 +30,8 @@ def cvt_dataset_into_bin():
 			cv2.imwrite(os.path.join(bin_path, image), img)
 			print(os.path.join(bin_path, image), img)
 
-
+			
+#utility to load images and convert into a h5 file
 def load_dataset():
 	data = []
 	labels = []
