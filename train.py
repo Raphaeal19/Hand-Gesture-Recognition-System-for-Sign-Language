@@ -20,6 +20,8 @@ f = h5py.File('Images_Labels_color_keras.hdf5', 'r')
 images = f['images']
 labels = f['labels']
 labels = [n.decode('utf8') for n in labels]
+
+#normaling images in case we decide to use colored images
 images = [n for n in images]
 data = np.array(images, dtype='float') / 255.0
 
@@ -32,13 +34,14 @@ labels = np_utils.to_categorical(labels, 36)
 
 print("Test/Train Spliting...")
 (train_X, test_X, train_Y, test_Y) = train_test_split(data, 
-													  labels, 
-													  test_size=0.25, 
-													  random_state=42, 
-													  shuffle=True)
+						      labels, 
+						      test_size=0.25, 
+						      random_state=42, 
+						      shuffle=True)
 
 
 
+#can use either grid search cv from scikit-learn and wrap it around tf, or use various for loops to optimize following hyperparamters
 print("Compiling Model...")
 start_time = int(time.time())
 dense_layers = 1
@@ -116,6 +119,7 @@ model.save("final_model_color.h5")
 model.save_weights('final_model_color_weights.h5')
 
 
+#plotting utility
 N = EPOCHS
 plt.style.use("ggplot")
 plt.figure()
