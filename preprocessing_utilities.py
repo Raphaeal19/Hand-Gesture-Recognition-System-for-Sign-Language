@@ -15,6 +15,7 @@ CATEGORIES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 
 #utility to convert dataset of images into a single channel(Grayscale) format
 def cvt_dataset_into_bin():
+	img_size = (128, 128)
 	for category in CATEGORIES:
 		bin_path = os.path.join(DATA_BINDIR, category)
 		os.makedirs(bin_path)
@@ -24,7 +25,7 @@ def cvt_dataset_into_bin():
 			if(img is None):
 				os.remove(os.path.join(path, image))
 			img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-			img = cv2.resize(img, (128, 128))
+			img = cv2.resize(img, img_size)
 			# plt.imshow(img, cmap='binary')
 			# plt.show()
 			cv2.imwrite(os.path.join(bin_path, image), img)
